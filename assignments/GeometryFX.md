@@ -1,5 +1,3 @@
-Here is an assignment you can give students.
-
 # Assignment: Build the Initial JavaFX Layout for `ShapeManagerApp`
 
 ## Goal
