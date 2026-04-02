@@ -6,45 +6,13 @@ In this assignment, you will build the **user interface layout only** for a Java
 
 The application will eventually manage shapes such as circles, rectangles, and triangles, but for this assignment, **none of the buttons need to do anything yet**. Your job is to create the window and place all controls in the correct positions.
 
-This assignment is meant to help you practice:
-
-* creating a JavaFX application
-* using layout panes
-* organizing controls in panels
-* setting spacing, padding, and preferred sizes
-* building a clean GUI before adding behavior
-
 --- 
 
 ## What the finished window should include
 
-Your application window should contain:
+Your application window should look like:
 
-### Left side
-
-A vertical control panel with:
-
-* a title label: `Shape Manager`
-* a button: `Add Circle`
-* a button: `Add Rectangle`
-* a button: `Add Triangle`
-* a button: `List All Shapes`
-* a button: `Show Total Area`
-* a button: `Show Largest Shape`
-* a label: `Shape Index:`
-* a text field for the index
-* a button: `Show Details for One Shape`
-* a button: `Quit`
-
-### Center area
-
-A larger panel containing:
-
-* a label: `Output`
-* a large `TextArea`
-
-The `TextArea` should be big enough to display multiple lines of text.
-
+![Alt text](./ShapeManagerUIOnly.png)
 --- 
 
 ## Program requirements
@@ -294,143 +262,7 @@ primaryStage.show();
 
 --- 
 
-# Suggested completed layout code
 
-```java
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-public class ShapeManagerApp extends Application {
-
-    @Override
-    public void start(Stage primaryStage) {
-        Label titleLabel = new Label("Shape Manager");
-
-        Button addCircleBtn = new Button("Add Circle");
-        Button addRectangleBtn = new Button("Add Rectangle");
-        Button addTriangleBtn = new Button("Add Triangle");
-        Button listShapesBtn = new Button("List All Shapes");
-        Button totalAreaBtn = new Button("Show Total Area");
-        Button largestShapeBtn = new Button("Show Largest Shape");
-        Label indexLabel = new Label("Shape Index:");
-        TextField indexField = new TextField();
-        Button detailsBtn = new Button("Show Details for One Shape");
-        Button quitBtn = new Button("Quit");
-
-        indexField.setPromptText("Enter shape index");
-
-        addCircleBtn.setMaxWidth(Double.MAX_VALUE);
-        addRectangleBtn.setMaxWidth(Double.MAX_VALUE);
-        addTriangleBtn.setMaxWidth(Double.MAX_VALUE);
-        listShapesBtn.setMaxWidth(Double.MAX_VALUE);
-        totalAreaBtn.setMaxWidth(Double.MAX_VALUE);
-        largestShapeBtn.setMaxWidth(Double.MAX_VALUE);
-        detailsBtn.setMaxWidth(Double.MAX_VALUE);
-        quitBtn.setMaxWidth(Double.MAX_VALUE);
-
-        VBox leftPanel = new VBox(
-                10,
-                titleLabel,
-                addCircleBtn,
-                addRectangleBtn,
-                addTriangleBtn,
-                listShapesBtn,
-                totalAreaBtn,
-                largestShapeBtn,
-                indexLabel,
-                indexField,
-                detailsBtn,
-                quitBtn
-        );
-        leftPanel.setPadding(new Insets(10));
-        leftPanel.setPrefWidth(220);
-
-        Label outputLabel = new Label("Output");
-        TextArea outputArea = new TextArea();
-        outputArea.setEditable(false);
-        outputArea.setWrapText(true);
-        outputArea.setPrefRowCount(20);
-
-        VBox centerPanel = new VBox(10, outputLabel, outputArea);
-        centerPanel.setPadding(new Insets(10));
-        VBox.setVgrow(outputArea, Priority.ALWAYS);
-
-        BorderPane root = new BorderPane();
-        root.setLeft(leftPanel);
-        root.setCenter(centerPanel);
-
-        Scene scene = new Scene(root, 750, 500);
-
-        primaryStage.setTitle("Shape Manager");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-```
-
---- 
-
-# What students should notice
-
-This layout shows how a GUI can organize the same operations that were previously listed in a console menu.
-
-In the console version, the user must:
-
-* read the menu
-* remember choices
-* enter numbers at the prompt
-
-In the GUI version, the user can:
-
-* see all available actions immediately
-* click the desired operation
-* use a dedicated area for output
-
-That is one of the major advantages of graphical user interfaces.
-
---- 
-
-# Submission requirements
-
-Students should submit:
-
-* `ShapeManagerApp.java`
-
-Their program must:
-
-* compile and run
-* display all required controls
-* use a `BorderPane` as the main layout
-* use `VBox` panels for organization
-* include the left control area and center output area
-* include no button functionality yet
-
---- 
-
-# Grading rubric
-
-## 10 points total
-
-**2 pts** Class is named `ShapeManagerApp` and extends `Application`
-**2 pts** Uses a `BorderPane` as the main layout
-**2 pts** Left panel contains all required controls in the correct order
-**2 pts** Center panel contains `Output` label and `TextArea`
-**2 pts** GUI runs correctly and is visually organized with spacing/padding
-
---- 
 
 # Optional challenge
 
@@ -439,10 +271,3 @@ After finishing the layout, add code so that clicking the **Quit** button closes
 ```java
 quitBtn.setOnAction(e -> primaryStage.close());
 ```
-
-If you want, I can also turn this into a polished handout with:
-
-* learning objectives
-* starter code
-* rubric
-* reflection questions for students
